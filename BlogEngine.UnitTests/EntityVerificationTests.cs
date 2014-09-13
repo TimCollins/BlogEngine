@@ -28,5 +28,56 @@ namespace BlogEngine.UnitTests
 
             Assert.IsNotNull(user);
         }
+
+        [Test]
+        public void VerifyCategoryProperties()
+        {
+            Category category = new Category
+            {
+                ID = 1,
+                Name = "Uncategorised",
+                CreatedBy = 1,
+                CreatedOn = DateTime.Now,
+                ModifiedBy = 1,
+                ModifiedOn = DateTime.Now
+            };
+
+            Assert.IsNotNull(category);
+        }
+
+        [Test]
+        public void VerifyPostProperties()
+        {
+            Post post = new Post
+            {
+                ID = 1,
+                CategoryID = 1,
+                Subject = "Subject",
+                Body = "Body",
+                CreatedBy = 1,
+                CreatedOn = DateTime.Now,
+                ModifiedBy = 1,
+                ModifiedOn = DateTime.Now
+            };
+
+            Assert.IsNotNull(post);
+        }
+
+        [Test]
+        public void VerifyCommentProperties()
+        {
+            Comment comment = new Comment
+            {
+                ID = 1,
+                PostID = 1,
+                Body = "Comment",
+                CreatedBy = 1,
+                CreatedOn = DateTime.Now,
+                ModifiedBy = 1,
+                ModifiedOn = DateTime.Now
+            };
+
+            Assert.IsNotNull(comment);
+        }
     }
 }
