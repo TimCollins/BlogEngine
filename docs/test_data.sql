@@ -26,16 +26,5 @@ INSERT INTO Post(CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, Mo
 VALUES(2, "Something interesting", "This is a post describing something interesting.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);
 
 -- Create some test comments.
-
-
-DROP TABLE IF EXISTS "Comment";
-CREATE TABLE "Comment" 
-(
-	"ID" INTEGER PRIMARY KEY  NOT NULL ,
-	"PostID" INTEGER NOT NULL ,
-	"Body" VARCHAR NOT NULL ,
-	"CreatedOn" DATETIME NOT NULL , 
-	"CreatedBy" INTEGER NOT NULL , 
-	"ModifiedOn" DATETIME NOT NULL , 
-	"ModifiedBy" INTEGER NOT NULL
-);
+INSERT INTO Comment(PostID, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
+VALUES(1, "This is a comment.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);
