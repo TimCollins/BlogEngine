@@ -16,7 +16,10 @@ namespace BlogEngine.Models.DataAccess
             {
                 throw new NullReferenceException(string.Format("No connection string found for {0}.", connectionStringName));
             }
-            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+
+            string f = Environment.CurrentDirectory;
+
+            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString.Replace("{AppDir}", AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

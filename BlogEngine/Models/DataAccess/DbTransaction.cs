@@ -77,7 +77,6 @@ namespace BlogEngine.Models.DataAccess
                     ConfigManager config = new ConfigManager();
 
                     Connection = new SQLiteConnection(config.GetConnectionString(ConnectionStringName));
-                    //Connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString);
                     Connection.Open();
                     Command = Connection.CreateCommand();
                 }
