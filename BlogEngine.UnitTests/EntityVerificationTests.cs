@@ -71,6 +71,7 @@ namespace BlogEngine.UnitTests
             {
                 ID = 1,
                 PostID = 1,
+                Title = "Title",
                 Body = "Comment",
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now,

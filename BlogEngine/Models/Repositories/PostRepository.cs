@@ -13,8 +13,8 @@ namespace BlogEngine.Models.Repositories
     {
         public List<Post> GetPosts(int count)
         {
-            const string sqlQuery = "SELECT ID, CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy "
-                                    + "FROM Post " + 
+            const string sqlQuery = "SELECT ID, CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy " + 
+                                    "FROM Post " + 
                                     "ORDER BY CreatedOn DESC " + 
                                     "LIMIT @count";
 

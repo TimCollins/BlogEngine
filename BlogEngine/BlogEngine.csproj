@@ -152,6 +152,7 @@
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Post.cs" />
     <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

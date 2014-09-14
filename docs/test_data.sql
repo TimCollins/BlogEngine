@@ -25,5 +25,8 @@ INSERT INTO Post(CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, Mo
 VALUES(2, "Something interesting", "This is a post describing something interesting.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);
 
 -- Create some test comments.
-INSERT INTO Comment(PostID, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
-VALUES(1, "This is a comment.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);
+INSERT INTO Comment(ID, PostID, Title, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
+VALUES(1, 1, "Comment 1 Title", "This is a comment.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);
+
+INSERT INTO Comment(ID, PostID, Title, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
+VALUES(2, 1, "Comment 2 Title", "This is also a comment.", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1);

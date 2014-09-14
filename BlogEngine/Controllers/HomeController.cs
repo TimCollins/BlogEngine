@@ -12,7 +12,6 @@ namespace BlogEngine.Controllers
 
         public ActionResult Index()
         {
-            //var postRepository = new Repository<Post>();
             PostRepository postRepository = new PostRepository();
 
             List<Post> posts = postRepository.GetPosts(5);
