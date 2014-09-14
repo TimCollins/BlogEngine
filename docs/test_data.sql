@@ -1,9 +1,8 @@
 -- Test data for the various tables.
 
 -- Create an admin user.
-INSERT INTO User (Name, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
-VALUES ("Admin", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1); 
-
+INSERT INTO User (ID, Name, Password, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
+VALUES (1, "Admin", "admin", CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1); 
 
 -- Create some categories.
 INSERT INTO Category (Name, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)

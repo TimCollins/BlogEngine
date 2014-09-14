@@ -20,6 +20,7 @@ namespace BlogEngine.UnitTests
             {
                 ID = 1,
                 Name = "Homer Simpson",
+                Password = "password",
                 CreatedBy = 1,
                 CreatedOn = DateTime.Now,
                 ModifiedBy = 1,
