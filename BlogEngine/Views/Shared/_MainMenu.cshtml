@@ -1,0 +1,25 @@
+﻿<div class="blog-masthead">
+    <div class="container">
+        <nav class="blog-nav">
+            @(ViewBag.MenuID == 1
+                ? Html.ActionLink("Home", "Index", "Home", null, new {@class = "blog-nav-item active"})
+                : Html.ActionLink("Home", "Index", "Home", null, new {@class = "blog-nav-item"}))
+            
+            @(ViewBag.MenuID == 2
+                ? Html.ActionLink("Categories", "Categories", "Home", null, new {@class = "blog-nav-item active"})
+                : Html.ActionLink("Categories", "Categories", "Home", null, new {@class = "blog-nav-item"}))
+
+            @(ViewBag.MenuID == 3
+                ? Html.ActionLink("Popular Posts", "Popular", "Home", null, new {@class = "blog-nav-item active"})
+                : Html.ActionLink("Popular Posts", "Popular", "Home", null, new {@class = "blog-nav-item"}))
+
+            @(ViewBag.MenuID == 4
+                ? Html.ActionLink("Help", "Help", "Home", null, new {@class = "blog-nav-item active"})
+                : Html.ActionLink("Help", "Help", "Home", null, new {@class = "blog-nav-item"}))
+            
+            @(ViewBag.MenuID == 5
+                ? @Html.ActionLink("About", "About", "Home", null, new {@class = "blog-nav-item active"})
+                : @Html.ActionLink("About", "About", "Home", null, new {@class = "blog-nav-item"}))
+        </nav>
+    </div>
+</div>

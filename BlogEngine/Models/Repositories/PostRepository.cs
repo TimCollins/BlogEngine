@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using BlogEngine.Models.DataAccess;
 using BlogEngine.Models.Entities;
+using BlogEngine.Models.ViewModels;
 
 namespace BlogEngine.Models.Repositories
 {
@@ -44,6 +45,50 @@ namespace BlogEngine.Models.Repositories
                 ModifiedBy = reader.Fetch<long>("ModifiedBy"),
                 ModifiedOn = reader.Fetch<DateTime>("ModifiedOn"),
                 Subject = reader.Fetch<string>("Subject")
+            };
+        }
+
+        public List<PostSummary> GetPostSummaries(int count)
+        {
+            const string sqlQuery = "SELECT p.ID AS PostID, " +
+                                    "p.CreatedOn, " +
+                                    "c.Name AS CategoryName, " +
+                                    "p.Body, " +
+                                    "p.Subject, " +
+                                    "u.ID AS UserID, " +
+                                    "u.Name AS UserName " +
+                                    "FROM Post p " +
+                                    "INNER JOIN Category c ON c.ID = p.CategoryID " +
+                                    "INNER JOIN User u ON u.ID = p.CreatedBy " +
+                                    "LIMIT @count";
+
+            List<PostSummary> posts = new List<PostSummary>();
+
+
+            using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@count", count)))
+            {
+                while (reader.Read())
+                {
+                    posts.Add(ReadPostSummary(reader));
+                }
+            }
+
+            return posts;
+        }
+
+        private PostSummary ReadPostSummary(SQLiteDataReader reader)
+        {
+            return new PostSummary
+            {
+                CategoryName = reader.Fetch<string>("CategoryName"),
+                // Create an extension method?
+                DateDetails = reader.Fetch<DateTime>("CreatedOn").ToShortDateString(),
+                PostID = reader.Fetch<long>("PostID"),
+                Subject = reader.Fetch<string>("Subject"),
+                // This should be the first 120 chars or something.
+                Summary = reader.Fetch<string>("Body"),
+                UserID = reader.Fetch<long>("UserID"),
+                UserName = reader.Fetch<string>("UserName")
             };
         }
     }
