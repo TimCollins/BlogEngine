@@ -37,6 +37,11 @@ namespace BlogEngine.Models.Repositories
             return posts;
         }
 
+        public void AddPost(Post post)
+        {
+            return;
+        }
+
         private Post ReadPost(SQLiteDataReader reader)
         {
             return new Post
