@@ -2,7 +2,8 @@
     ViewBag.Title = "Index";
 }
 
-@model IEnumerable<BlogEngine.Models.ViewModels.PostSummary>
+@*@model IEnumerable<BlogEngine.Models.ViewModels.PostSummary>*@
+@model IEnumerable<BlogEngine.Models.Entities.Post>
 
 @{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary {{ "MenuID", 1}});}
 
@@ -16,7 +17,16 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-            @foreach (var postSummary in Model)
+            @foreach (var post in Model)
+            {
+                <div class="blog-post">
+                    <h2 class="blog-post-title">
+                        @post.Subject
+                    </h2>
+                </div>
+            }
+
+@*            @foreach (var postSummary in Model)
             {
                 <div class="blog-post">
                     <h2 class="blog-post-title">
@@ -26,7 +36,7 @@
                         @Html.ActionLink(postSummary.UserName, "Details", "User", new {id = postSummary.UserID}, new {title = postSummary.UserName})
                     </p>
                 </div>
-            }
+            }*@
 
             <ul class="pager">
                 <li><a href="#">Previous</a></li>

@@ -10,17 +10,21 @@ namespace BlogEngine.Models.Repositories
     /// <summary>
     /// An alternative repository implementation not using a generic interface (yet)
     /// </summary>
-    public class PostRepository
+    public class PostRepository : IPostRepository
     {
         public List<Post> GetPosts(int count)
         {
+            List<Post> posts = new List<Post>();
+
+            if (count < 1)
+            {
+                return posts;
+            }
+
             const string sqlQuery = "SELECT ID, CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy " + 
                                     "FROM Post " + 
                                     "ORDER BY CreatedOn DESC " + 
                                     "LIMIT @count";
-
-            List<Post> posts = new List<Post>();
-
 
             using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@count", count)))
             {
