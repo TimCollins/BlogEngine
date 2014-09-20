@@ -48,7 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityVerificationTests.cs" />
+    <Compile Include="PostSummaryTests.cs" />
+    <Compile Include="PostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPostRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

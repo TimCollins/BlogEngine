@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using BlogEngine.Models.DataAccess;
 using BlogEngine.Models.Entities;
+using BlogEngine.Models.Repositories.Interfaces;
 using BlogEngine.Models.ViewModels;
 
 namespace BlogEngine.Models.Repositories
@@ -10,7 +11,7 @@ namespace BlogEngine.Models.Repositories
     /// <summary>
     /// An alternative repository implementation not using a generic interface (yet)
     /// </summary>
-    public class PostRepository
+    public class PostRepository : IPostRepository
     {
         public List<Post> GetPosts(int count)
         {
