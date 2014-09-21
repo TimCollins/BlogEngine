@@ -206,7 +206,7 @@ namespace BlogEngine.UnitTests
 
             string output = date.ToDisplayDate();
 
-            Assert.AreEqual("2 days ago", output);
+            Assert.AreEqual("Sep 18 2014", output);
         }
     }
 }
