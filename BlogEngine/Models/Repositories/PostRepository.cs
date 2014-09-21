@@ -83,7 +83,7 @@ namespace BlogEngine.Models.Repositories
             {
                 CategoryName = reader.Fetch<string>("CategoryName"),
                 // Create an extension method?
-                DateDetails = reader.Fetch<DateTime>("CreatedOn").ToShortDateString(),
+                DateDetails = reader.Fetch<DateTime>("CreatedOn").ToDisplayDate(),
                 PostID = reader.Fetch<long>("PostID"),
                 Subject = reader.Fetch<string>("Subject"),
                 // This should be the first 120 chars or something.

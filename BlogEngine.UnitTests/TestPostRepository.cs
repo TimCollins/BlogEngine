@@ -19,7 +19,7 @@ namespace BlogEngine.UnitTests
                 new PostSummary
                 {
                     CategoryName = "Uncategoried",
-                    DateDetails = "5 mins ago",
+                    DateDetails = "2014-09-14 13:38:30",
                     PostID = 1,
                     Subject = "Test summary 1",
                     Summary = "This is test post 1.",

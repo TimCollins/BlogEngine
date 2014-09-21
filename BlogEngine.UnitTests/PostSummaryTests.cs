@@ -17,7 +17,7 @@ namespace BlogEngine.UnitTests
 
             Assert.IsNotNull(summary);
             Assert.AreEqual("Uncategoried", summary.CategoryName);
-            Assert.AreEqual("5 mins ago", summary.DateDetails);
+            Assert.AreEqual("2014-09-14 13:38:30", summary.DateDetails);
             Assert.AreEqual(1, summary.PostID);
             Assert.AreEqual("Test summary 1", summary.Subject);
             Assert.AreEqual("This is test post 1.", summary.Summary);
