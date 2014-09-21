@@ -8,8 +8,8 @@ namespace BlogEngine
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/blog.css")
-                .Include("~/Content/bootstrap.css"));
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Content/blog.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/jquery-1.9.1.js")
