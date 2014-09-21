@@ -15,12 +15,12 @@ namespace BlogEngine.Models
             DateTime now = DateTime.Now;
             TimeSpan dateDiff = now - date;
 
-            if (dateDiff.Seconds > 0 && dateDiff.Seconds < 60)
+            if (dateDiff.TotalSeconds > 0 && dateDiff.TotalSeconds < 60)
             {
                 return "Just now";
             }
 
-            return "";
+            return ((int)Math.Round(dateDiff.TotalSeconds / 60)) + " mins ago";
         }
 
     }
