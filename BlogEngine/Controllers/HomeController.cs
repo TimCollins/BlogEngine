@@ -8,9 +8,6 @@ namespace BlogEngine.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
-
         public ActionResult Index()
         {
             //List<Post> posts = postRepository.GetPosts(5);
@@ -19,6 +16,5 @@ namespace BlogEngine.Controllers
 
             return View(posts);
         }
-
     }
 }

@@ -34,21 +34,6 @@ namespace BlogEngine.Models.Repositories
             return posts;
         }
 
-        private Post ReadPost(SQLiteDataReader reader)
-        {
-            return new Post
-            {
-                Body = reader.Fetch<string>("Body"),
-                CategoryID = reader.Fetch<long>("CategoryID"),
-                CreatedBy = reader.Fetch<long>("CreatedBy"),
-                CreatedOn = reader.Fetch<DateTime>("CreatedOn"),
-                ID = reader.Fetch<long>("ID"),
-                ModifiedBy = reader.Fetch<long>("ModifiedBy"),
-                ModifiedOn = reader.Fetch<DateTime>("ModifiedOn"),
-                Subject = reader.Fetch<string>("Subject")
-            };
-        }
-
         public List<PostSummary> GetPostSummaries(int count)
         {
             const string sqlQuery = "SELECT p.ID AS PostID, " +
@@ -77,12 +62,45 @@ namespace BlogEngine.Models.Repositories
             return posts;
         }
 
+        public Post GetPostByID(int id)
+        {
+            const string sqlQuery = "SELECT ID, CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy " +
+                                    "FROM Post " +
+                                    "WHERE ID = @id";
+
+            Post post = new Post();
+
+            using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@id", id)))
+            {
+                if (reader.Read())
+                {
+                    post = ReadPost(reader);
+                }
+            }
+
+            return post;
+        }
+
+        private Post ReadPost(SQLiteDataReader reader)
+        {
+            return new Post
+            {
+                Body = reader.Fetch<string>("Body"),
+                CategoryID = reader.Fetch<long>("CategoryID"),
+                CreatedBy = reader.Fetch<long>("CreatedBy"),
+                CreatedOn = reader.Fetch<DateTime>("CreatedOn"),
+                ID = reader.Fetch<long>("ID"),
+                ModifiedBy = reader.Fetch<long>("ModifiedBy"),
+                ModifiedOn = reader.Fetch<DateTime>("ModifiedOn"),
+                Subject = reader.Fetch<string>("Subject")
+            };
+        }
+
         private PostSummary ReadPostSummary(SQLiteDataReader reader)
         {
             return new PostSummary
             {
                 CategoryName = reader.Fetch<string>("CategoryName"),
-                // Create an extension method?
                 DateDetails = reader.Fetch<DateTime>("CreatedOn").ToDisplayDate(),
                 PostID = reader.Fetch<long>("PostID"),
                 Subject = reader.Fetch<string>("Subject"),

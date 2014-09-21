@@ -141,6 +141,12 @@ namespace BlogEngine.UnitTests
         {
             return _testPostSummaries.OrderBy(p => p.PostID).Take(count).ToList();
         }
+
+        public Post GetPostByID(int id)
+        {
+            // Do nothing at the moment as it's not being tested yet.
+            return new Post();
+        }
     }
 
 }
