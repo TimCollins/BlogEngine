@@ -69,6 +69,55 @@ namespace BlogEngine.UnitTests
             Assert.AreEqual("59 mins ago", output);
         }
 
+        [Test]
+        public void Verify1HourAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-60);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("1 hour ago", output);
+        }
+
+        [Test]
+        public void Verify1HourAgoAlt()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-119);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("1 hour ago", output);
+        }
+
+        [Test]
+        public void Verify2HoursAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-130);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 hours ago", output);
+        }
+
+        [Test]
+        public void Verify2HoursAgoAlt()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-179);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 hours ago", output);
+        }
+
+        [Test]
+        public void Verify3HoursAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-190);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("3 hours ago", output);
+        }
 
     }
 }

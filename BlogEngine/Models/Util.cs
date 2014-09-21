@@ -15,12 +15,19 @@ namespace BlogEngine.Models
             DateTime now = DateTime.Now;
             TimeSpan dateDiff = now - date;
 
-            if (dateDiff.TotalSeconds > 0 && dateDiff.TotalSeconds < 60)
+            if (dateDiff.TotalSeconds > 0 && dateDiff.TotalSeconds < 3600)
             {
-                return "Just now";
+                if (dateDiff.TotalSeconds < 60)
+                {
+                    return "Just now";
+                }
+
+                return ((int)Math.Round(dateDiff.TotalSeconds / 60)) + " mins ago";
             }
 
-            return ((int)Math.Round(dateDiff.TotalSeconds / 60)) + " mins ago";
+            int hours = (int) Math.Floor(dateDiff.TotalHours);
+
+            return hours + (hours == 1 ? " hour ago" : " hours ago");
         }
 
     }
