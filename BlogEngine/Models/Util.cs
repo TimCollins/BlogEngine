@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace BlogEngine.Models
 {
@@ -25,9 +26,29 @@ namespace BlogEngine.Models
                 return ((int)Math.Round(dateDiff.TotalSeconds / 60)) + " mins ago";
             }
 
-            int hours = (int) Math.Floor(dateDiff.TotalHours);
+            if (dateDiff.TotalHours < 24)
+            {
+                int hours = (int)Math.Floor(dateDiff.TotalHours);
 
-            return hours + (hours == 1 ? " hour ago" : " hours ago");
+                return hours + (hours == 1 ? " hour ago" : " hours ago");
+            }
+
+            if (dateDiff.TotalHours > 24 && dateDiff.TotalHours < 48)
+            {
+                return "Yesterday";
+            }
+
+            if (dateDiff.TotalHours > 48 && dateDiff.TotalHours < 72)
+            {
+                return "2 days ago";
+            }
+
+            string month = date.ToString("MMM", CultureInfo.InvariantCulture);
+
+            return string.Format("{0} {1} {2}",
+                month,
+                date.Day,
+                date.Year);
         }
 
     }

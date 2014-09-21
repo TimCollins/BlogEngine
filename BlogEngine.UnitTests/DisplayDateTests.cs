@@ -119,5 +119,94 @@ namespace BlogEngine.UnitTests
             Assert.AreEqual("3 hours ago", output);
         }
 
+        [Test]
+        public void Verify19HoursAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-1150);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("19 hours ago", output);
+        }
+
+        [Test]
+        public void Verify23HoursAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-1410);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("23 hours ago", output);
+        }
+
+        [Test]
+        public void VerifyYesterdayLowerBoundary()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-2500);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("Yesterday", output);
+        }
+
+        [Test]
+        public void VerifyYesterday()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-2750);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("Yesterday", output);
+        }
+
+        [Test]
+        public void VerifyYesterdayUpperBoundary()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-2879);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("Yesterday", output);
+        }
+
+        [Test]
+        public void Verify2DaysAgoLowerBoundary()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-2881);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 days ago", output);
+        }
+        
+        [Test]
+        public void Verify2DaysAgo()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-4210);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 days ago", output);
+        }
+
+        [Test]
+        public void Verify2DaysAgoUpperBoundary()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-4319);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 days ago", output);
+        }
+
+        [Test]
+        public void VerifyShortDateFormat()
+        {
+            DateTime date = DateTime.Now.AddMinutes(-5000);
+
+            string output = date.ToDisplayDate();
+
+            Assert.AreEqual("2 days ago", output);
+        }
     }
 }
