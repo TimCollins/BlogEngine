@@ -109,15 +109,21 @@ namespace BlogEngine.Models.Repositories
             const string sqlQuery = "INSERT INTO Post(CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy) " + 
                 "VALUES (@categoryID, @subject, @body, @createdOn, @createdBy, @modifiedOn, @modifiedBy)";
 
+            // Default to Admin if we don't have a user.
+            if (post.CreatedBy == 0)
+            {
+                post.CreatedBy = 1;
+            }
+
             List<SQLiteParameter> parameters = new List<SQLiteParameter>
             {
                 new SQLiteParameter("@categoryID", post.CategoryID),
                 new SQLiteParameter("@subject", post.Subject),
                 new SQLiteParameter("@body", post.Body),
                 new SQLiteParameter("createdOn", DateTime.Now),
-                new SQLiteParameter("createdBy", post.ModifiedBy),
+                new SQLiteParameter("createdBy", post.CreatedBy),
                 new SQLiteParameter("modifiedOn", DateTime.Now),
-                new SQLiteParameter("modifiedBy", post.ModifiedBy)
+                new SQLiteParameter("modifiedBy", post.CreatedBy)
             };
 
             DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());

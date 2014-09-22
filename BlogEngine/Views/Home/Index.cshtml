@@ -11,6 +11,9 @@
     @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
 
     <div class="row">
+        <p>
+            @Html.ActionLink("Create Post", "Create", "Post", null, new {@class = "btn btn-primary btn-lg", @role = "button"})
+        </p>
 
         <div class="col-sm-8 blog-main">
             @foreach (var postSummary in Model)
