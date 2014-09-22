@@ -208,6 +208,7 @@
     <Content Include="Views\Shared\_Links.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\Post\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -104,6 +104,25 @@ namespace BlogEngine.Models.Repositories
             DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());
         }
 
+        public void CreatePost(Post post)
+        {
+            const string sqlQuery = "INSERT INTO Post(CategoryID, Subject, Body, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy) " + 
+                "VALUES (@categoryID, @subject, @body, @createdOn, @createdBy, @modifiedOn, @modifiedBy)";
+
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>
+            {
+                new SQLiteParameter("@categoryID", post.CategoryID),
+                new SQLiteParameter("@subject", post.Subject),
+                new SQLiteParameter("@body", post.Body),
+                new SQLiteParameter("createdOn", DateTime.Now),
+                new SQLiteParameter("createdBy", post.ModifiedBy),
+                new SQLiteParameter("modifiedOn", DateTime.Now),
+                new SQLiteParameter("modifiedBy", post.ModifiedBy)
+            };
+
+            DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());
+        }
+
         private Post ReadPost(SQLiteDataReader reader)
         {
             return new Post

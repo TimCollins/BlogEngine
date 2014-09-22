@@ -152,6 +152,11 @@ namespace BlogEngine.UnitTests
         {
             return;
         }
+
+        public void CreatePost(Post post)
+        {
+            return;
+        }
     }
 
 }

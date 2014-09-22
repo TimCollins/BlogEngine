@@ -27,7 +27,21 @@ namespace BlogEngine.Controllers
             post.Body = HttpUtility.HtmlDecode(post.Body);
             RepositoryFactory.PostRepository.UpdatePost(post);
 
-            return RedirectToAction("Index", "Home",null);
+            return RedirectToAction("Index", "Home", null);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Post post)
+        {
+            post.Body = HttpUtility.HtmlDecode(post.Body);
+            RepositoryFactory.PostRepository.CreatePost(post);
+
+            return RedirectToAction("Index", "Home", null);
         }
     }
 }

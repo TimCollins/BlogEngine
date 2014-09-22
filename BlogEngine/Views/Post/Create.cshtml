@@ -1,7 +1,7 @@
 ﻿@model BlogEngine.Models.Entities.Post
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create a new Post";
 }
 
 @{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary { { "MenuID", 1 } });}
@@ -18,9 +18,7 @@
             @Html.ValidationSummary(true)
 
             <fieldset>
-                <legend>Edit a Post</legend>
-
-                @Html.HiddenFor(model => model.ID)
+                <legend>Create a Post</legend>
 
                 <div class="editor-label">
                     @Html.LabelFor(model => model.CategoryID)
@@ -46,7 +44,7 @@
                     @Html.ValidationMessageFor(model => model.Body)
                 </div>
                 <p>
-                    <input type="submit" value="Save Post" class="btn btn-primary btn-lg" />
+                    <input type="submit" value="Create Post" class="btn btn-primary btn-lg" />
                 </p>
             </fieldset>
         }
@@ -55,6 +53,10 @@
         @Html.ActionLink("Back to List", "Index", "Home")
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 <script type="text/javascript" src="../../Scripts/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
