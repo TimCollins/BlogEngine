@@ -9,5 +9,6 @@ namespace BlogEngine.Models.Repositories.Interfaces
         List<Post> GetPosts(int count);
         List<PostSummary> GetPostSummaries(int count);
         Post GetPostByID(int id);
+        void UpdatePost(Post post);
     }
 }

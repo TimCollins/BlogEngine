@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using BlogEngine.Models.DataAccess;
 using BlogEngine.Models.Entities;
@@ -79,6 +80,28 @@ namespace BlogEngine.Models.Repositories
             }
 
             return post;
+        }
+
+        public void UpdatePost(Post post)
+        {
+            const string sqlQuery = "UPDATE Post " +
+                                    "SET CategoryID = @categoryID, " +
+                                    "Subject = @subject, " +
+                                    "Body = @body, " +
+                                    "ModifiedOn = @modifiedOn, " +
+                                    "ModifiedBy = @modifiedBy " +
+                                    "WHERE ID = @id";
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>
+            {
+                new SQLiteParameter("@categoryID", post.CategoryID),
+                new SQLiteParameter("@subject", post.Subject),
+                new SQLiteParameter("@body", post.Body),
+                new SQLiteParameter("modifiedOn", DateTime.Now),
+                new SQLiteParameter("modifiedBy", post.ModifiedBy),
+                new SQLiteParameter("@id", post.ID)
+            };
+
+            DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());
         }
 
         private Post ReadPost(SQLiteDataReader reader)

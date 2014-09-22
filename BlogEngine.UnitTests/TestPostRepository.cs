@@ -147,6 +147,11 @@ namespace BlogEngine.UnitTests
             // Do nothing at the moment as it's not being tested yet.
             return new Post();
         }
+
+        public void UpdatePost(Post post)
+        {
+            return;
+        }
     }
 
 }

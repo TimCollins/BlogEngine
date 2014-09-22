@@ -7,20 +7,26 @@
 @{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary { { "MenuID", 1 } });}
 
 <div class="container">
-    
+
     @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
+
+    <div class="options">
+        <p>
+            @Html.ActionLink("Edit Post", "Edit", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })
+        </p>
+    </div>
 
     <div class="row">
         <div class="col-sm-8 blog-main">
             <h2 class="blog-post-title">@Model.Subject</h2>
-            <p class="blog-post-meta">Posted @Model.CreatedOn by @Model.CreatedBy</p>            
+            <p class="blog-post-meta">Posted @Model.CreatedOn by @Model.CreatedBy</p>
             <p>@Html.Raw(Model.Body)</p>
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             @{Html.RenderPartial("~/Views/Shared/_AuthorSummary.cshtml");}
 
             @{Html.RenderPartial("~/Views/Shared/_BlogArchives.cshtml");}
-            
+
             @{Html.RenderPartial("~/Views/Shared/_Links.cshtml");}
         </div>
     </div>
