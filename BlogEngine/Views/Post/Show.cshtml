@@ -13,6 +13,10 @@
     <div class="options">
         <p>
             @Html.ActionLink("Edit Post", "Edit", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })
+            
+            <input type="submit" value="Delete Post" name="action" class = "btn btn-primary btn-lg" />
+
+            @*@Html.ActionLink("Delete Post", "Delete", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })*@
         </p>
     </div>
 

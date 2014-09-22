@@ -157,6 +157,11 @@ namespace BlogEngine.UnitTests
         {
             return;
         }
+
+        public void DeletePostByID(int id)
+        {
+            return;
+        }
     }
 
 }

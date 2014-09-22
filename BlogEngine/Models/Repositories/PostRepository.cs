@@ -129,6 +129,14 @@ namespace BlogEngine.Models.Repositories
             DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());
         }
 
+        public void DeletePostByID(int id)
+        {
+            const string sqlQuery = "DELETE FROM Post " +
+                                    "WHERE ID = @id";
+
+            DbUtil.ExecuteNonQuery(sqlQuery, new SQLiteParameter("@id", id));
+        }
+
         private Post ReadPost(SQLiteDataReader reader)
         {
             return new Post

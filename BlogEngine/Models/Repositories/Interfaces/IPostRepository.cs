@@ -11,5 +11,6 @@ namespace BlogEngine.Models.Repositories.Interfaces
         Post GetPostByID(int id);
         void UpdatePost(Post post);
         void CreatePost(Post post);
+        void DeletePostByID(int id);
     }
 }
