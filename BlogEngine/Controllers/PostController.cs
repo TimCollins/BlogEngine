@@ -44,7 +44,7 @@ namespace BlogEngine.Controllers
             return RedirectToAction("Index", "Home", null);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             RepositoryFactory.PostRepository.DeletePostByID(id);

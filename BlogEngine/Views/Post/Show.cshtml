@@ -10,22 +10,21 @@
 
     @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
 
-    <div class="options">
-        <p>
-            @Html.ActionLink("Edit Post", "Edit", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })
-            
-            <input type="submit" value="Delete Post" name="action" class = "btn btn-primary btn-lg" />
-
-            @*@Html.ActionLink("Delete Post", "Delete", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })*@
-        </p>
-    </div>
-
     <div class="row">
-        <div class="col-sm-8 blog-main">
-            <h2 class="blog-post-title">@Model.Subject</h2>
-            <p class="blog-post-meta">Posted @Model.CreatedOn by @Model.CreatedBy</p>
-            <p>@Html.Raw(Model.Body)</p>
-        </div>
+        @using (Html.BeginForm("Delete", "Post", FormMethod.Post)) {        
+            <div class="options">
+                <p>
+                    @Html.ActionLink("Edit Post", "Edit", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })
+            
+                    <input type="submit" value="Delete Post" name="action" class = "btn btn-primary btn-lg" />
+                </p>
+            </div>
+            <div class="col-sm-8 blog-main">
+                <h2 class="blog-post-title">@Model.Subject</h2>
+                <p class="blog-post-meta">Posted @Model.CreatedOn by @Model.CreatedBy</p>
+                <p>@Html.Raw(Model.Body)</p>
+            </div>
+        }
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             @{Html.RenderPartial("~/Views/Shared/_AuthorSummary.cshtml");}
 
