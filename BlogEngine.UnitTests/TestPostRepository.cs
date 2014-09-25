@@ -158,7 +158,7 @@ namespace BlogEngine.UnitTests
             return;
         }
 
-        public void DeletePostByID(int id)
+        public void DeletePostByID(long id)
         {
             return;
         }

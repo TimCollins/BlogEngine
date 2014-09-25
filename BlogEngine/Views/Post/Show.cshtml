@@ -1,8 +1,8 @@
-﻿@{
+﻿@model BlogEngine.Models.Entities.Post
+
+@{
     ViewBag.Title = "Show";
 }
-
-@model BlogEngine.Models.Entities.Post
 
 @{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary { { "MenuID", 1 } });}
 
@@ -11,7 +11,8 @@
     @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
 
     <div class="row">
-        @using (Html.BeginForm("Delete", "Post", FormMethod.Post)) {        
+        @using (Html.BeginForm("Delete", "Post", FormMethod.Post)) {
+            @Html.HiddenFor(m => m.ID) 
             <div class="options">
                 <p>
                     @Html.ActionLink("Edit Post", "Edit", "Post", new { id = Model.ID }, new { @class = "btn btn-primary btn-lg", @role = "button" })

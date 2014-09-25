@@ -129,7 +129,7 @@ namespace BlogEngine.Models.Repositories
             DbUtil.ExecuteNonQuery(sqlQuery, parameters.ToArray());
         }
 
-        public void DeletePostByID(int id)
+        public void DeletePostByID(long id)
         {
             const string sqlQuery = "DELETE FROM Post " +
                                     "WHERE ID = @id";
