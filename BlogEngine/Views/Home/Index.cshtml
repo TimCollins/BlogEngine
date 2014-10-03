@@ -24,6 +24,7 @@
                     </h2>                    
                     <p class="blog-post-meta">Posted @postSummary.DateDetails by 
                         @Html.ActionLink(postSummary.UserName, "Details", "User", new {id = postSummary.UserID}, new {title = postSummary.UserName})
+                        in @Html.ActionLink(postSummary.CategoryName, "Show", "Category", new {id = postSummary.PostID}, new {title = postSummary.CategoryName})
                     </p>
                 </div>
             }
