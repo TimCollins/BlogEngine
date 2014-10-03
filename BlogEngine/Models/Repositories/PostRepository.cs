@@ -39,7 +39,7 @@ namespace BlogEngine.Models.Repositories
             const string sqlQuery = "SELECT p.ID AS PostID, " +
                                     "p.CreatedOn, " +
                                     "c.Name AS CategoryName, " +
-                                    "p.Body, " +
+                                    "SUBSTR(p.Body, 0, @length) Summary, " +
                                     "p.Subject, " +
                                     "u.ID AS UserID, " +
                                     "u.Name AS UserName " +
@@ -50,8 +50,7 @@ namespace BlogEngine.Models.Repositories
 
             List<PostSummary> posts = new List<PostSummary>();
 
-
-            using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@count", count)))
+            using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@length", Constants.PostSummaryLength), new SQLiteParameter("@count", count)))
             {
                 while (reader.Read())
                 {
@@ -153,17 +152,23 @@ namespace BlogEngine.Models.Repositories
 
         private PostSummary ReadPostSummary(SQLiteDataReader reader)
         {
-            return new PostSummary
+            PostSummary postSummary = new PostSummary
             {
                 CategoryName = reader.Fetch<string>("CategoryName"),
                 DateDetails = reader.Fetch<DateTime>("CreatedOn").ToDisplayDate(),
                 PostID = reader.Fetch<long>("PostID"),
                 Subject = reader.Fetch<string>("Subject"),
-                // This should be the first 120 chars or something.
-                Summary = reader.Fetch<string>("Body"),
+                Summary = reader.Fetch<string>("Summary"),
                 UserID = reader.Fetch<long>("UserID"),
                 UserName = reader.Fetch<string>("UserName")
             };
+
+            if (postSummary.Summary.Length == Constants.PostSummaryLength - 1)
+            {
+                postSummary.Summary += "…";
+            }
+
+            return postSummary;
         }
     }
 }

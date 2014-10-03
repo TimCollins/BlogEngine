@@ -145,6 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\DataAccess\ConfigManager.cs" />
     <Compile Include="Models\DataAccess\DbTransaction.cs" />
     <Compile Include="Models\DataAccess\DbUtil.cs" />
