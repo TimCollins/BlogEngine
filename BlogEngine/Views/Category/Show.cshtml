@@ -1,0 +1,40 @@
+﻿@model BlogEngine.Models.Entities.Category
+
+@{
+    ViewBag.Title = "Show";
+}
+
+@{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary { { "MenuID", 1 } });}
+
+<div class="container">
+
+    @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <fieldset>
+                <legend>Category</legend>
+                <div class="display-label">
+                     @Html.DisplayNameFor(model => model.Name)
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+
+                <div class="display-label">
+                     @Html.DisplayNameFor(model => model.CreatedOn)
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.CreatedOn)
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            @{Html.RenderPartial("~/Views/Shared/_AuthorSummary.cshtml");}
+
+            @{Html.RenderPartial("~/Views/Shared/_BlogArchives.cshtml");}
+
+            @{Html.RenderPartial("~/Views/Shared/_Links.cshtml");}
+        </div>
+    </div>
+</div>
