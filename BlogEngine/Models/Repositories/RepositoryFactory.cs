@@ -6,6 +6,7 @@ namespace BlogEngine.Models.Repositories
     {
         private static IPostRepository _postRepository;
         private static ICategoryRepository _categoryRepository;
+        private static IUserRepository _userRepository;
 
         public static IPostRepository PostRepository
         {
@@ -17,6 +18,12 @@ namespace BlogEngine.Models.Repositories
         {
             get { return _categoryRepository ?? (_categoryRepository = new CategoryRepository()); }
             set { _categoryRepository = value; }
+        }
+
+        public static IUserRepository UserRepository
+        {
+            get { return _userRepository ?? (_userRepository = new UserRepository()); }
+            set { _userRepository = value; }
         }
     }
 }

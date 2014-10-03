@@ -142,6 +142,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,8 +161,10 @@
     <Compile Include="Models\Repositories\CommentRepository.cs" />
     <Compile Include="Models\Repositories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Repositories\Interfaces\IPostRepository.cs" />
+    <Compile Include="Models\Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Models\Repositories\PostRepository.cs" />
     <Compile Include="Models\Repositories\RepositoryFactory.cs" />
+    <Compile Include="Models\Repositories\UserRepository.cs" />
     <Compile Include="Models\Util.cs" />
     <Compile Include="Models\ViewModels\PostSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +215,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
