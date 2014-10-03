@@ -155,7 +155,9 @@
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Post.cs" />
     <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Repositories\CommentRepository.cs" />
+    <Compile Include="Models\Repositories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Repositories\Interfaces\IPostRepository.cs" />
     <Compile Include="Models\Repositories\PostRepository.cs" />
     <Compile Include="Models\Repositories\RepositoryFactory.cs" />

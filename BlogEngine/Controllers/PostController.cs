@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using BlogEngine.Models.Entities;
 using BlogEngine.Models.Repositories;
@@ -32,6 +33,9 @@ namespace BlogEngine.Controllers
 
         public ActionResult Create()
         {
+            List<SelectListItem> categories = RepositoryFactory.CategoryRepository.GetCategoriesForDropDown();
+            ViewBag.CategoryList = categories;
+
             return View();
         }
 

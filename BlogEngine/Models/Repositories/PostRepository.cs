@@ -23,7 +23,6 @@ namespace BlogEngine.Models.Repositories
 
             List<Post> posts = new List<Post>();
 
-
             using (var reader = DbUtil.ExecuteReader(sqlQuery, new SQLiteParameter("@count", count)))
             {
                 while (reader.Read())
