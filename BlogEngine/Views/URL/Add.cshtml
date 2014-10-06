@@ -1,0 +1,56 @@
+﻿@model BlogEngine.Models.ViewModels.AddURLViewModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+@{Html.RenderPartial("~/Views/Shared/_MainMenu.cshtml", new ViewDataDictionary { { "MenuID", 1 } });}
+
+<div class="container">
+
+    @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
+
+    <div class="row">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Add a URL</legend>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.OriginalURL)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.OriginalURL)
+                    @Html.ValidationMessageFor(m => m.OriginalURL)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.UseCustomSlug, "Use a custom slug")
+                </div>
+                <div class="editor-field">
+                    @Html.CheckBoxFor(m => m.UseCustomSlug)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.CustomSlug, "Custom slug")
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.CustomSlug)
+                    @Html.ValidationMessageFor(m => m.CustomSlug)
+                </div>
+     
+                <div class="editor-label">
+                    &nbsp;
+                </div>
+                <div class="editor-field">
+                    <input type="submit" value="Create Short URL" class="btn btn-primary btn-lg" />
+                    @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary btn-lg"})
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

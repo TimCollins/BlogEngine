@@ -42,10 +42,38 @@ namespace BlogEngine.Controllers
         [HttpPost]
         public ActionResult Create(Post post)
         {
-            post.Body = HttpUtility.HtmlDecode(post.Body);
-            RepositoryFactory.PostRepository.CreatePost(post);
+            ValidatePost(post);
 
-            return RedirectToAction("Index", "Home", null);
+            if (ModelState.IsValid)
+            {
+                post.Body = HttpUtility.HtmlDecode(post.Body);
+                RepositoryFactory.PostRepository.CreatePost(post);
+                return RedirectToAction("Index", "Home", null);
+            }
+
+            List<SelectListItem> categories = RepositoryFactory.CategoryRepository.GetCategoriesForDropDown();
+            ViewBag.CategoryList = categories;
+
+
+            return View();
+        }
+
+        private void ValidatePost(Post post)
+        {
+            if (post.CategoryID == 0)
+            {
+                ModelState.AddModelError("Category", "Category is required.");
+            }
+
+            if (string.IsNullOrEmpty(post.Subject))
+            {
+                ModelState.AddModelError("Subject", "Subject is required.");
+            }
+
+            if (string.IsNullOrEmpty(post.Body))
+            {
+                ModelState.AddModelError("Body", "Body is required.");
+            }
         }
 
         [HttpPost]

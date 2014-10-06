@@ -9,10 +9,10 @@ namespace BlogEngine.Models.Entities
         [Display(Name="Category")]
         public long CategoryID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The subject field is required.")]
         public string Subject { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The body field is required.")]
         public string Body { get; set; }
     }
 }

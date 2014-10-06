@@ -143,6 +143,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\URLController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,6 +168,8 @@
     <Compile Include="Models\Repositories\RepositoryFactory.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
     <Compile Include="Models\Util.cs" />
+    <Compile Include="Models\Validation\RequiredIfTrueAttribute.cs" />
+    <Compile Include="Models\ViewModels\AddURLViewModel.cs" />
     <Compile Include="Models\ViewModels\PostSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -225,6 +228,7 @@
     <Content Include="Views\Post\Create.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Category\Show.cshtml" />
+    <Content Include="Views\URL\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
