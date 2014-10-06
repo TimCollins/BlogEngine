@@ -42,14 +42,15 @@
                     @Html.TextAreaFor(model => model.Body, new { @class = "tinymce" })
                     @Html.ValidationMessageFor(model => model.Body)
                 </div>
-                <p>
+                <div class="editor-label">
+                    &nbsp;
+                </div>
+                <div class="editor-field">
                     <input type="submit" value="Create Post" class="btn btn-primary btn-lg" />
-                </p>
+                    @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary btn-lg"})
+                </div>
             </fieldset>
         }
-    </div>
-    <div>
-        @Html.ActionLink("Back to List", "Index", "Home")
     </div>
 </div>
 
