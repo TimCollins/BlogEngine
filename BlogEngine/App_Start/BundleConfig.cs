@@ -14,6 +14,10 @@ namespace BlogEngine
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/jquery-1.9.1.js")
                 .Include("~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/jquery.unobtrusive*",
+                "~/Scripts/jquery.validate*"));
         }
     }
 }
