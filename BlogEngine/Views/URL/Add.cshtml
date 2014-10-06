@@ -60,6 +60,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/requiredIfTrueValidation.js")
+    @Scripts.Render("~/Scripts/modernizr-2.8.3.js")
     <script type="text/javascript">
         $("#customSlugRow").toggle($($("#@Html.IdFor(m => m.UseCustomSlug)")).is(":checked"));
         $("#@Html.IdFor(m => m.UseCustomSlug)").click(function () {
