@@ -50,6 +50,5 @@ namespace BlogEngine.Models
                 date.Day,
                 date.Year);
         }
-
     }
 }
