@@ -11,8 +11,9 @@
     @{Html.RenderPartial("~/Views/Shared/_Header.cshtml");}
 
     <div class="row">
-
-        @using (Html.BeginForm())
+        @*Example of not posting a form on submit*@
+        @*using (Html.BeginForm(null, null, FormMethod.Post, new { onsubmit = "return false;" }))*@
+        @using (Html.BeginForm())        
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -39,14 +40,14 @@
                     @Html.LabelFor(model => model.Body)
                 </div>
                 <div class="editor-field">
-                    @Html.TextAreaFor(model => model.Body, new { @class = "tinymce" })
+                    @Html.TextAreaFor(model => model.Body)
                     @Html.ValidationMessageFor(model => model.Body)
                 </div>
                 <div class="editor-label">
                     &nbsp;
                 </div>
                 <div class="editor-field">
-                    <input type="submit" value="Create Post" class="btn btn-primary btn-lg" />
+                    <input type="submit" id="btnSubmit" value="Create Post" class="btn btn-primary btn-lg" />
                     @Html.ActionLink("Cancel", "Index", "Home", null, new {@class = "btn btn-primary btn-lg"})
                 </div>
             </fieldset>
@@ -56,18 +57,26 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+    @Scripts.Render("~/bundles/jquery")
 
-<script type="text/javascript" src="../../Scripts/tinymce/tinymce.min.js"></script>
-<script type="text/javascript">
-    tinymce.init({
-        mode: "specific_textareas",
-        editor_selector: "tinymce",
-        encoding: "xml",
-        setup: function (editor) {
-            editor.on('SaveContent', function (ed) {
-                ed.content = ed.content.replace(/&#39/g, "&apos");
+    <script type="text/javascript" src="../../Scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            mode: "specific_textareas",
+            editor_selector: "tinymce",
+            encoding: "xml",
+            setup: function (editor) {
+                editor.on('SaveContent', function (ed) {
+                    ed.content = ed.content.replace(/&#39/g, "&apos");
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                tinyMCE.triggerSave();
             });
-        }
-    });
-</script>
+        });
+    </script>
+}
