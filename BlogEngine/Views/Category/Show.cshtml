@@ -13,19 +13,19 @@
     <div class="row">
         <div class="col-sm-8 blog-main">
             <fieldset>
-                <legend>Category</legend>
+                <legend>Category Details</legend>
                 <div class="display-label">
-                     @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Name)
                 </div>
                 <div class="display-field">
                     @Html.DisplayFor(model => model.Name)
                 </div>
 
                 <div class="display-label">
-                     @Html.DisplayNameFor(model => model.CreatedOn)
+                    @Html.DisplayNameFor(model => model.CreatedOn)
                 </div>
                 <div class="display-field">
-                    @Html.DisplayFor(model => model.CreatedOn)
+                    @String.Format("{0:MMM dd, yyyy}", Model.CreatedOn)
                 </div>
             </fieldset>
         </div>
