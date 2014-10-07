@@ -40,9 +40,10 @@ namespace BlogEngine.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Post post)
+        public ActionResult Create(Post post, int categoryList)
         {
             post.Body = HttpUtility.HtmlDecode(post.Body);
+            post.CategoryID = categoryList;
             RepositoryFactory.PostRepository.CreatePost(post);
 
             return RedirectToAction("Index", "Home", null);
